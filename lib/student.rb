@@ -1,23 +1,32 @@
-class Student
 
-  attr_accessor :name, :location, :twitter, :linkedin, :github, :blog, :profile_quote, :bio, :profile_url 
-
-  @@all = []
-
-  def initialize(student_hash)
+@@all = []
+ 	 
+   def initialize(student_hash)	   def initialize(student_hash)
+    student_hash.each { |key,value| self.send(("#{key}=") ,value)}
     
-  end
-
-  def self.create_from_collection(students_array)
-    
-  end
-
-  def add_student_attributes(attributes_hash)
-    
-  end
-
-  def self.all
-    
-  end
-end
+    @@all << self 
+     	     
+   end	   end
+ 	 
+   def self.create_from_collection(students_array)	   def self.create_from_collection(students_array)
+    students_array.each {|student_hash|
+    student = self.new(student_hash)
+    student.name = student_hash[:name]
+    student.location = student_hash[:location]}
+   end	   end
+ 	 
+   def add_student_attributes(attributes_hash)	   def add_student_attributes(attributes_hash)
+    attributes_hash.each do |key,value|
+     self.send(("#{key}="),value)
+    end 
+   end	   end
+ 	 
+   def self.all	   def self.all
+ @@all  
+   end	   end
+  
+   
+  
+ end	 end
+ 	 
 
