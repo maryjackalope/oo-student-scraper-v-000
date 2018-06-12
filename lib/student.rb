@@ -17,17 +17,13 @@
    end	   
  	 
    def add_student_attributes(attributes_hash)	 
-    attributes_hash.each do |key,value|
-     self.send(("#{key}="),value)
-    end 
+      attributes_hash.each do |key,value|
+        self.send(("#{key}="),value)
+        end 
    end	  
  	 
-   def self.all	   def self.all
- @@all  
-   end	   end
-  
-   
-  
- end	 end
- 	 
+   def self.all	 
+      @@all  
+   end	 
 
+ end	 
